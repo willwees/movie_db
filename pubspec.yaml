@@ -4,7 +4,7 @@ description: A Flutter MovieDB project.
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.16.1 <3.0.0"
+  sdk: ">=2.15.1 <3.0.0"
 
 dependencies:
   cupertino_icons: ^1.0.2
@@ -13,6 +13,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_bloc: ^8.0.1
+  flutter_svg: ^0.23.0+1
   get_it: ^7.2.0
   retrofit: '>=3.0.0 <4.0.0'
 
