@@ -17,7 +17,7 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
 
     // Navigate to home after 2 seconds
-    Future<void>.delayed(const Duration(seconds: 2), () {
+    Future<void>.delayed(const Duration(seconds: 1), () {
       Navigator.pushReplacementNamed(context, RoutePaths.root);
     });
   }
