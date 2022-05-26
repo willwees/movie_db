@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:moviedb/src/constants/text/movie_text.dart';
 import 'package:moviedb/src/features/movie/bloc/movie_bloc.dart';
+import 'package:moviedb/src/features/movie/ui/widgets/movie_card_list_shimmer_widget.dart';
 import 'package:moviedb/src/features/movie/ui/widgets/movie_card_list_widget.dart';
 
 class MovieScreen extends StatefulWidget {
@@ -24,7 +26,7 @@ class _MovieScreenState extends State<MovieScreen> with AutomaticKeepAliveClient
     super.build(context);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Movies'),
+        title: const Text(MovieText.movie),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -51,10 +53,15 @@ class _MovieScreenState extends State<MovieScreen> with AutomaticKeepAliveClient
       buildWhen: (MovieState previous, MovieState current) =>
           previous.nowPlayingMovieList != current.nowPlayingMovieList,
       builder: (_, MovieState state) {
-        return MovieCardListWidget(
-          title: 'Now Playing',
-          movieList: state.nowPlayingMovieList,
-        );
+        if (state.nowPlayingMovieList.isNotEmpty) {
+          return MovieCardListWidget(
+            title: MovieText.nowPlaying,
+            movieList: state.nowPlayingMovieList,
+          );
+        }
+
+        // default loading
+        return const MovieCardListShimmerWidget(title: MovieText.nowPlaying);
       },
     );
   }
@@ -64,10 +71,15 @@ class _MovieScreenState extends State<MovieScreen> with AutomaticKeepAliveClient
       bloc: context.read<MovieBloc>(),
       buildWhen: (MovieState previous, MovieState current) => previous.upcomingMovieList != current.upcomingMovieList,
       builder: (_, MovieState state) {
-        return MovieCardListWidget(
-          title: 'Upcoming',
-          movieList: state.upcomingMovieList,
-        );
+        if (state.upcomingMovieList.isNotEmpty) {
+          return MovieCardListWidget(
+            title: MovieText.upcoming,
+            movieList: state.upcomingMovieList,
+          );
+        }
+
+        // default loading
+        return const MovieCardListShimmerWidget(title: MovieText.upcoming);
       },
     );
   }
@@ -77,10 +89,15 @@ class _MovieScreenState extends State<MovieScreen> with AutomaticKeepAliveClient
       bloc: context.read<MovieBloc>(),
       buildWhen: (MovieState previous, MovieState current) => previous.popularMovieList != current.popularMovieList,
       builder: (_, MovieState state) {
-        return MovieCardListWidget(
-          title: 'Popular',
-          movieList: state.popularMovieList,
-        );
+        if (state.popularMovieList.isNotEmpty) {
+          return MovieCardListWidget(
+            title: MovieText.popular,
+            movieList: state.popularMovieList,
+          );
+        }
+
+        // default loading
+        return const MovieCardListShimmerWidget(title: MovieText.popular);
       },
     );
   }
