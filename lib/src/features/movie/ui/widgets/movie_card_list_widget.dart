@@ -35,7 +35,7 @@ class MovieCardListWidget extends StatelessWidget {
             itemCount: movieList.length,
             itemBuilder: (_, int index) {
               return MovieCardWidget(
-                imageUrl: '${ApiConstant.baseImageUrl}${movieList[index].posterPath}',
+                imageUrl: '${ApiConstant.baseImageSmallUrl}${movieList[index].posterPath}',
                 text: movieList[index].title,
                 voteAverage: movieList[index].voteAverage,
                 onTap: () {
