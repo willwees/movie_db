@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:moviedb/src/constants/text/detail_text.dart';
-import 'package:moviedb/src/features/movie/ui/widgets/detail_header_widget.dart';
+import 'package:moviedb/src/features/movie/bloc/movie_detail/movie_detail_bloc.dart';
+import 'package:moviedb/src/features/movie/ui/widgets/movie_detail_header_widget.dart';
 import 'package:moviedb/src/network/api/api_constant.dart';
 import 'package:moviedb/src/network/model/response/movies_response_model.dart';
+import 'package:provider/provider.dart';
 
 class MovieDetailScreen extends StatefulWidget {
   final Movie movie;
@@ -17,6 +19,13 @@ class MovieDetailScreen extends StatefulWidget {
 }
 
 class _MovieDetailScreenState extends State<MovieDetailScreen> {
+
+  @override
+  void initState() {
+    super.initState();
+    context.read<MovieDetailBloc>().add(MovieDetailGetMovieDetailEvent(movieId: widget.movie.id));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,7 +37,7 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            DetailHeaderWidget(
+            MovieDetailHeaderWidget(
               idMovie: widget.movie.id,
               title: widget.movie.title,
               imageBannerUrl: '${ApiConstant.baseImageOriginalUrl}${widget.movie.backdropPath}',

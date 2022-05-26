@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:moviedb/src/constants/device_properties.dart';
 import 'package:moviedb/src/constants/transparent_images.dart';
+import 'package:moviedb/src/features/movie/bloc/movie_detail/movie_detail_bloc.dart';
+import 'package:moviedb/src/network/model/response/movie_detail_response_model.dart';
 
-class DetailHeaderWidget extends StatelessWidget {
+class MovieDetailHeaderWidget extends StatelessWidget {
   final int idMovie;
   final String title;
   final String imageBannerUrl;
   final String imagePosterUrl;
   final double voteAverage;
 
-  const DetailHeaderWidget({
+  const MovieDetailHeaderWidget({
     Key? key,
     required this.idMovie,
     required this.title,
@@ -64,8 +67,9 @@ class DetailHeaderWidget extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
-        const SizedBox(height: 8.0),
+        const SizedBox(height: 4.0),
         _buildRatingSection(context),
+        _buildGenreSection(context),
       ],
     );
   }
@@ -93,6 +97,38 @@ class DetailHeaderWidget extends StatelessWidget {
           style: Theme.of(context).textTheme.subtitle2,
         ),
       ],
+    );
+  }
+
+  Widget _buildGenreSection(BuildContext context) {
+    return BlocBuilder<MovieDetailBloc, MovieDetailState>(
+      bloc: context.read<MovieDetailBloc>(),
+      buildWhen: (MovieDetailState previous, MovieDetailState current) =>
+          previous.movieDetailResponseModel != current.movieDetailResponseModel,
+      builder: (_, MovieDetailState state) {
+        if (state.movieDetailResponseModel == null) {
+          return Container();
+        }
+
+        return Padding(
+          padding: const EdgeInsets.only(right: 8.0),
+          child: SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: state.movieDetailResponseModel!.genres
+                  .map(
+                    (Genre genre) => Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                      child: Chip(
+                        label: Text(genre.name),
+                      ),
+                    ),
+                  )
+                  .toList(),
+            ),
+          ),
+        );
+      },
     );
   }
 }
