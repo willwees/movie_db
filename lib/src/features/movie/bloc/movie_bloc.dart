@@ -16,12 +16,11 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
 
   Future<void> _getNowPlayingList(MovieGetNowPlayingListEvent event, Emitter<MovieState> emit) async {
     try {
-      final MoviesResponseModel result = await repository.getMovieNowPlaying(page: state.page);
+      final MoviesResponseModel result = await repository.getNowPlayingMovieList();
 
       emit(
         state.copyWith(
-          page: state.page + 1,
-          movieList: List<Movie>.of(state.movieList)..addAll(result.movieList),
+          nowPlayingMovieList: List<Movie>.of(state.nowPlayingMovieList)..addAll(result.movieList),
         ),
       );
     } catch (e) {

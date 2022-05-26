@@ -9,10 +9,9 @@ part 'api_service.g.dart';
 abstract class ApiService {
   factory ApiService(Dio dio, {String baseUrl}) = _ApiService;
 
-  @GET(ApiConstant.getMovieNowPlaying)
-  Future<MoviesResponseModel> getMovieNowPlaying(
+  @GET(ApiConstant.getNowPlayingMovieList)
+  Future<MoviesResponseModel> getNowPlayingMovieList(
     @Query('api_key') String apiKey,
     @Query('language') String language,
-    @Query('page') int page,
   );
 }

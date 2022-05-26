@@ -41,7 +41,7 @@ class _MovieScreenState extends State<MovieScreen> with AutomaticKeepAliveClient
       builder: (_, MovieState state) {
         return MovieCardListWidget(
           title: 'Now Playing',
-          movieList: state.movieList,
+          movieList: state.nowPlayingMovieList,
         );
       },
     );

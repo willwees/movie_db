@@ -5,5 +5,5 @@ class ApiConstant {
   static const String baseImageUrl = 'https://image.tmdb.org/t/p/w200';
 
   // Movie
-  static const String getMovieNowPlaying = '/movie/now_playing';
+  static const String getNowPlayingMovieList = '/movie/now_playing';
 }

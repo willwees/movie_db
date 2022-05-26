@@ -27,11 +27,10 @@ class ApiRepository {
     return dio;
   }
 
-  Future<MoviesResponseModel> getMovieNowPlaying({
+  Future<MoviesResponseModel> getNowPlayingMovieList({
     String apiKey = ApiConstant.apiKey,
     String language = ApiConstant.language,
-    required int page,
   }) {
-    return _apiService.getMovieNowPlaying(apiKey, language, page);
+    return _apiService.getNowPlayingMovieList(apiKey, language);
   }
 }

@@ -1,35 +1,29 @@
 part of 'movie_bloc.dart';
 
 class MovieState extends Equatable {
-  final int page;
-  final List<Movie> movieList;
+  final List<Movie> nowPlayingMovieList;
 
   const MovieState({
-    this.page = 1,
-    this.movieList = const <Movie>[],
+    this.nowPlayingMovieList = const <Movie>[],
   });
 
   MovieState copyWith({
-    int? page,
-    List<Movie>? movieList,
+    List<Movie>? nowPlayingMovieList,
   }) {
     return MovieState(
-      page: page ?? this.page,
-      movieList: movieList ?? this.movieList,
+      nowPlayingMovieList: nowPlayingMovieList ?? this.nowPlayingMovieList,
     );
   }
 
   @override
   List<Object> get props => <Object>[
-        page,
-        movieList,
+        nowPlayingMovieList,
       ];
 
   @override
   String toString() {
     return 'MovieState: { '
-        'page: $page, '
-        'movieList: $movieList, '
+        'nowPlayingMovieList: $nowPlayingMovieList, '
         '}';
   }
 }
