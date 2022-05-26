@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:moviedb/src/constants/device_properties.dart';
 import 'package:moviedb/src/constants/route_paths.dart';
-import 'package:moviedb/src/features/movie/ui/widgets/movie_card_widget.dart';
 import 'package:moviedb/src/network/api/api_constant.dart';
 import 'package:moviedb/src/network/model/response/movie/movies_response_model.dart';
+import 'package:moviedb/src/shared/widgets/movie_card_widget.dart';
 
 class MovieCardListWidget extends StatelessWidget {
   final String title;

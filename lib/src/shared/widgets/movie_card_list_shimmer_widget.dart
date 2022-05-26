@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:moviedb/src/constants/app_colors.dart';
 import 'package:moviedb/src/constants/device_properties.dart';
-import 'package:moviedb/src/features/movie/ui/widgets/movie_card_widget.dart';
+import 'package:moviedb/src/shared/widgets/movie_card_widget.dart';
 import 'package:shimmer/shimmer.dart';
 
 class MovieCardListShimmerWidget extends StatelessWidget {

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:moviedb/src/constants/text/movie_text.dart';
 import 'package:moviedb/src/features/movie/bloc/movie/movie_bloc.dart';
-import 'package:moviedb/src/features/movie/ui/widgets/movie_card_list_shimmer_widget.dart';
 import 'package:moviedb/src/features/movie/ui/widgets/movie_card_list_widget.dart';
+import 'package:moviedb/src/shared/widgets/movie_card_list_shimmer_widget.dart';
 
 class MovieScreen extends StatefulWidget {
   const MovieScreen({Key? key}) : super(key: key);

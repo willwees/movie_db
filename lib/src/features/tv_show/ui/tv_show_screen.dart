@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:moviedb/src/constants/text/tv_show_text.dart';
-import 'package:moviedb/src/features/movie/ui/widgets/movie_card_list_shimmer_widget.dart';
 import 'package:moviedb/src/features/tv_show/bloc/tv_show/tvshow_bloc.dart';
 import 'package:moviedb/src/features/tv_show/ui/widgets/tv_show_card_list_widget.dart';
+import 'package:moviedb/src/shared/widgets/movie_card_list_shimmer_widget.dart';
 
 class TVShowScreen extends StatefulWidget {
   const TVShowScreen({Key? key}) : super(key: key);
