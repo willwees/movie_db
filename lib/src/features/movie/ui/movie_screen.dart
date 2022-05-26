@@ -15,6 +15,8 @@ class _MovieScreenState extends State<MovieScreen> with AutomaticKeepAliveClient
   void initState() {
     super.initState();
     context.read<MovieBloc>().add(MovieGetNowPlayingListEvent());
+    context.read<MovieBloc>().add(MovieGetUpcomingListEvent());
+    context.read<MovieBloc>().add(MovieGetPopularListEvent());
   }
 
   @override
@@ -26,10 +28,18 @@ class _MovieScreenState extends State<MovieScreen> with AutomaticKeepAliveClient
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Column(
-          children: <Widget>[
-            _buildNowPlayingSection(),
-          ],
+        child: SingleChildScrollView(
+          physics: const ClampingScrollPhysics(),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              _buildNowPlayingSection(),
+              const SizedBox(height: 16.0),
+              _buildUpcomingSection(),
+              const SizedBox(height: 16.0),
+              _buildPopularSection(),
+            ],
+          ),
         ),
       ),
     );
@@ -38,10 +48,38 @@ class _MovieScreenState extends State<MovieScreen> with AutomaticKeepAliveClient
   Widget _buildNowPlayingSection() {
     return BlocBuilder<MovieBloc, MovieState>(
       bloc: context.read<MovieBloc>(),
+      buildWhen: (MovieState previous, MovieState current) =>
+          previous.nowPlayingMovieList != current.nowPlayingMovieList,
       builder: (_, MovieState state) {
         return MovieCardListWidget(
           title: 'Now Playing',
           movieList: state.nowPlayingMovieList,
+        );
+      },
+    );
+  }
+
+  Widget _buildUpcomingSection() {
+    return BlocBuilder<MovieBloc, MovieState>(
+      bloc: context.read<MovieBloc>(),
+      buildWhen: (MovieState previous, MovieState current) => previous.upcomingMovieList != current.upcomingMovieList,
+      builder: (_, MovieState state) {
+        return MovieCardListWidget(
+          title: 'Upcoming',
+          movieList: state.upcomingMovieList,
+        );
+      },
+    );
+  }
+
+  Widget _buildPopularSection() {
+    return BlocBuilder<MovieBloc, MovieState>(
+      bloc: context.read<MovieBloc>(),
+      buildWhen: (MovieState previous, MovieState current) => previous.popularMovieList != current.popularMovieList,
+      builder: (_, MovieState state) {
+        return MovieCardListWidget(
+          title: 'Popular',
+          movieList: state.popularMovieList,
         );
       },
     );
