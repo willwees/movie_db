@@ -15,3 +15,12 @@ class MovieDetailGetMovieDetailEvent extends MovieDetailEvent {
   @override
   List<Object?> get props => <Object>[movieId];
 }
+
+class MovieDetailGetMovieReviewListEvent extends MovieDetailEvent {
+  final int movieId;
+
+  const MovieDetailGetMovieReviewListEvent({required this.movieId});
+
+  @override
+  List<Object?> get props => <Object>[movieId];
+}

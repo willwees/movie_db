@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:moviedb/src/constants/text/detail_text.dart';
 import 'package:moviedb/src/features/movie/bloc/movie_detail/movie_detail_bloc.dart';
 import 'package:moviedb/src/features/movie/ui/widgets/movie_detail_header_widget.dart';
+import 'package:moviedb/src/features/movie/ui/widgets/movie_review_card_widget.dart';
 import 'package:moviedb/src/network/api/api_constant.dart';
 import 'package:moviedb/src/network/model/response/movies_response_model.dart';
-import 'package:provider/provider.dart';
+import 'package:moviedb/src/network/model/response/reviews_response_model.dart';
 
 class MovieDetailScreen extends StatefulWidget {
   final Movie movie;
@@ -19,11 +21,11 @@ class MovieDetailScreen extends StatefulWidget {
 }
 
 class _MovieDetailScreenState extends State<MovieDetailScreen> {
-
   @override
   void initState() {
     super.initState();
     context.read<MovieDetailBloc>().add(MovieDetailGetMovieDetailEvent(movieId: widget.movie.id));
+    context.read<MovieDetailBloc>().add(MovieDetailGetMovieReviewListEvent(movieId: widget.movie.id));
   }
 
   @override
@@ -53,9 +55,45 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
                 textAlign: TextAlign.justify,
               ),
             ),
+            _buildReviewList(),
           ],
         ),
       ),
+    );
+  }
+
+  Widget _buildReviewList() {
+    return BlocBuilder<MovieDetailBloc, MovieDetailState>(
+      bloc: context.read<MovieDetailBloc>(),
+      buildWhen: (MovieDetailState previous, MovieDetailState current) => previous.reviewList != current.reviewList,
+      builder: (_, MovieDetailState state) {
+        if (state.reviewList.isEmpty) {
+          return Container();
+        }
+
+        return Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text(
+                DetailText.reviews,
+                style: Theme.of(context).textTheme.headline6,
+              ),
+              const SizedBox(height: 8.0),
+              ...state.reviewList
+                  .map(
+                    (Review review) => MovieReviewCardWidget(
+                      avatarUrl: review.authorDetails.avatarPath,
+                      username: review.author,
+                      content: review.content,
+                    ),
+                  )
+                  .toList(),
+            ],
+          ),
+        );
+      },
     );
   }
 }
