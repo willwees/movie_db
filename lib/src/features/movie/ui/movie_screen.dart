@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:moviedb/src/features/movie/bloc/movie_bloc.dart';
 import 'package:moviedb/src/features/movie/ui/widgets/movie_card_list_widget.dart';
+import 'package:provider/provider.dart';
 
 class MovieScreen extends StatefulWidget {
   const MovieScreen({Key? key}) : super(key: key);
@@ -9,6 +11,12 @@ class MovieScreen extends StatefulWidget {
 }
 
 class _MovieScreenState extends State<MovieScreen> with AutomaticKeepAliveClientMixin {
+  @override
+  void initState() {
+    super.initState();
+    context.read<MovieBloc>().add(MovieGetNowPlayingListEvent());
+  }
+
   @override
   Widget build(BuildContext context) {
     super.build(context);

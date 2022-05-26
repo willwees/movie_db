@@ -19,7 +19,7 @@ class ApiRepository {
           return interceptorHandler.next(request);
         },
         onError: (DioError error, ErrorInterceptorHandler interceptorHandler) {
-          print('interceptor onError ${error.response}: ${error.response}');
+          print('interceptor onError : ${error.response}');
         },
       ),
     );

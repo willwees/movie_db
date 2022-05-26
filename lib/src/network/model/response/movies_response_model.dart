@@ -6,10 +6,10 @@ part 'movies_response_model.g.dart';
 @JsonSerializable()
 class MoviesResponseModel {
   @JsonKey(name: 'results')
-  final List<Movies> results;
+  final List<Movie> movieList;
 
   MoviesResponseModel({
-    this.results = const <Movies>[],
+    this.movieList = const <Movie>[],
   });
 
   factory MoviesResponseModel.fromJson(Map<String, dynamic> json) => _$MoviesResponseModelFromJson(json);
@@ -18,7 +18,7 @@ class MoviesResponseModel {
 }
 
 @JsonSerializable()
-class Movies extends Equatable {
+class Movie extends Equatable {
   @JsonKey(name: 'id')
   final int id;
 
@@ -46,13 +46,10 @@ class Movies extends Equatable {
   @JsonKey(name: 'backdrop_path')
   final String backdropPath;
 
-  @JsonKey(name: 'original_name')
-  final String originalName;
+  @JsonKey(name: 'original_title')
+  final String originalTitle;
 
-  @JsonKey(name: 'first_air_date')
-  final String firstAirDate;
-
-  const Movies(
+  const Movie(
     this.id,
     this.title,
     this.overview,
@@ -62,8 +59,7 @@ class Movies extends Equatable {
     this.popularity,
     this.posterPath,
     this.backdropPath,
-    this.originalName,
-    this.firstAirDate,
+    this.originalTitle,
   );
 
   @override
@@ -77,11 +73,10 @@ class Movies extends Equatable {
         popularity,
         posterPath,
         backdropPath,
-        originalName,
-        firstAirDate,
+        originalTitle,
       ];
 
-  factory Movies.fromJson(Map<String, dynamic> json) => _$MoviesFromJson(json);
+  factory Movie.fromJson(Map<String, dynamic> json) => _$MovieFromJson(json);
 
-  Map<String, dynamic> toJson() => _$MoviesToJson(this);
+  Map<String, dynamic> toJson() => _$MovieToJson(this);
 }

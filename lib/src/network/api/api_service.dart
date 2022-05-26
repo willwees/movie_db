@@ -11,7 +11,7 @@ abstract class ApiService {
 
   @GET(ApiConstant.getMovieNowPlaying)
   Future<MoviesResponseModel> getMovieNowPlaying(
-    @Query('apikey') String apiKey,
+    @Query('api_key') String apiKey,
     @Query('language') String language,
     @Query('page') int page,
   );
