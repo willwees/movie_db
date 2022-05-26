@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:moviedb/src/features/movie/bloc/movie_bloc.dart';
 import 'package:moviedb/src/features/movie/ui/widgets/movie_card_list_widget.dart';
-import 'package:provider/provider.dart';
 
 class MovieScreen extends StatefulWidget {
   const MovieScreen({Key? key}) : super(key: key);
@@ -27,13 +27,23 @@ class _MovieScreenState extends State<MovieScreen> with AutomaticKeepAliveClient
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
-          children: const <Widget>[
-            MovieCardListWidget(
-              title: 'Now Playing',
-            ),
+          children: <Widget>[
+            _buildNowPlayingSection(),
           ],
         ),
       ),
+    );
+  }
+
+  Widget _buildNowPlayingSection() {
+    return BlocBuilder<MovieBloc, MovieState>(
+      bloc: context.read<MovieBloc>(),
+      builder: (_, MovieState state) {
+        return MovieCardListWidget(
+          title: 'Now Playing',
+          movieList: state.movieList,
+        );
+      },
     );
   }
 

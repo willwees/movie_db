@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:moviedb/src/constants/device_properties.dart';
 import 'package:moviedb/src/features/movie/ui/widgets/movie_card_widget.dart';
+import 'package:moviedb/src/network/api/api_constant.dart';
+import 'package:moviedb/src/network/model/response/movies_response_model.dart';
 
 class MovieCardListWidget extends StatelessWidget {
   final String title;
+  final List<Movie> movieList;
 
   const MovieCardListWidget({
     Key? key,
     required this.title,
+    required this.movieList,
   }) : super(key: key);
 
   @override
@@ -27,13 +31,15 @@ class MovieCardListWidget extends StatelessWidget {
           child: ListView.builder(
             shrinkWrap: true,
             scrollDirection: Axis.horizontal,
-            itemCount: 3,
+            itemCount: movieList.length,
             itemBuilder: (_, int index) {
               return MovieCardWidget(
-                imageUrl: 'https://picsum.photos/250?image=9',
-                text: 'Hai',
-                voteAverage: 6.8,
-                onTap: () {},
+                imageUrl: '${ApiConstant.baseImageUrl}${movieList[index].posterPath}',
+                text: movieList[index].title,
+                voteAverage: movieList[index].voteAverage,
+                onTap: () {
+                  //TODO: view details
+                },
               );
             },
           ),
