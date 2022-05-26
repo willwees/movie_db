@@ -32,6 +32,6 @@ abstract class ApiService {
   Future<MovieDetailResponseModel> getMovieDetail(
     @Query('api_key') String apiKey,
     @Query('language') String language, {
-    @Path(ApiConstant.movieId) required int movieId,
+    @Path('movieId') required int movieId,
   });
 }
