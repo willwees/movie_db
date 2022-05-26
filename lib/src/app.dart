@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:moviedb/src/constants/app_colors.dart';
 import 'package:moviedb/src/constants/route_paths.dart';
 import 'package:moviedb/src/features/root/ui/root_screen.dart';
 import 'package:moviedb/src/features/splash/ui/splash_screen.dart';
@@ -11,7 +12,7 @@ class App extends StatelessWidget {
     return MaterialApp(
       title: 'Movie DB',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: AppColors.kSwatchColors,
       ),
       initialRoute: RoutePaths.splash,
       onGenerateRoute: _onGenerateRoute,
