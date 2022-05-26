@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:moviedb/src/network/model/response/movies_response_model.dart';
+import 'package:moviedb/src/network/model/response/movie/movies_response_model.dart';
 import 'package:moviedb/src/repository/api_repository.dart';
 
 part 'movie_event.dart';

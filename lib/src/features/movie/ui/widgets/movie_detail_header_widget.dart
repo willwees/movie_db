@@ -4,7 +4,7 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:moviedb/src/constants/device_properties.dart';
 import 'package:moviedb/src/constants/transparent_images.dart';
 import 'package:moviedb/src/features/movie/bloc/movie_detail/movie_detail_bloc.dart';
-import 'package:moviedb/src/network/model/response/movie_detail_response_model.dart';
+import 'package:moviedb/src/network/model/response/movie/movie_detail_response_model.dart';
 
 class MovieDetailHeaderWidget extends StatelessWidget {
   final int idMovie;

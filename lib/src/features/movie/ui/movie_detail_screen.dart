@@ -5,7 +5,7 @@ import 'package:moviedb/src/features/movie/bloc/movie_detail/movie_detail_bloc.d
 import 'package:moviedb/src/features/movie/ui/widgets/movie_detail_header_widget.dart';
 import 'package:moviedb/src/features/movie/ui/widgets/movie_review_card_widget.dart';
 import 'package:moviedb/src/network/api/api_constant.dart';
-import 'package:moviedb/src/network/model/response/movies_response_model.dart';
+import 'package:moviedb/src/network/model/response/movie/movies_response_model.dart';
 import 'package:moviedb/src/network/model/response/reviews_response_model.dart';
 
 class MovieDetailScreen extends StatefulWidget {

@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:moviedb/src/network/api/api_constant.dart';
 import 'package:moviedb/src/network/api/api_service.dart';
-import 'package:moviedb/src/network/model/response/movie_detail_response_model.dart';
-import 'package:moviedb/src/network/model/response/movies_response_model.dart';
+import 'package:moviedb/src/network/model/response/movie/movie_detail_response_model.dart';
+import 'package:moviedb/src/network/model/response/movie/movies_response_model.dart';
 import 'package:moviedb/src/network/model/response/reviews_response_model.dart';
 
 class ApiRepository {
