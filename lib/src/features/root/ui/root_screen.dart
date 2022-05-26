@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:moviedb/src/constants/app_colors.dart';
+import 'package:moviedb/src/constants/text/movie_text.dart';
+import 'package:moviedb/src/constants/text/profile_text.dart';
+import 'package:moviedb/src/constants/text/tv_show_text.dart';
 import 'package:moviedb/src/features/movie/ui/movie_screen.dart';
 
 class RootScreen extends StatefulWidget {
@@ -44,17 +48,18 @@ class _RootScreenState extends State<RootScreen> {
       bottomNavigationBar: BottomNavigationBar(
         onTap: _onIndexTap,
         currentIndex: _page,
+        selectedItemColor: AppColors.kLightBlue,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            label: 'Movie',
+            label: MovieText.movie,
             icon: Icon(Icons.movie),
           ),
           BottomNavigationBarItem(
-            label: 'TV Show',
+            label: TVShowText.tvShow,
             icon: Icon(Icons.tv),
           ),
           BottomNavigationBarItem(
-            label: 'Profile',
+            label: ProfileText.profile,
             icon: Icon(Icons.person),
           ),
         ],

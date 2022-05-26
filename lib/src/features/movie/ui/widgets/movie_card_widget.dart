@@ -28,6 +28,7 @@ class MovieCardWidget extends StatelessWidget {
             borderRadius: BorderRadius.circular(10.0),
           ),
           child: Stack(
+            fit: StackFit.expand,
             children: <Widget>[
               _buildBackgroundImage(),
               _buildDescription(context),
@@ -44,6 +45,7 @@ class MovieCardWidget extends StatelessWidget {
       child: FadeInImage.memoryNetwork(
         placeholder: kTransparentImage,
         image: imageUrl,
+        fit: BoxFit.cover,
       ),
     );
   }
@@ -53,6 +55,7 @@ class MovieCardWidget extends StatelessWidget {
       left: 0,
       bottom: 0,
       child: Container(
+        width: kDeviceLogicalWidth / 2.5,
         padding: const EdgeInsets.only(left: 6.0, bottom: 6.0),
         decoration: const BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(10.0)),
@@ -64,7 +67,7 @@ class MovieCardWidget extends StatelessWidget {
             Text(
               text,
               overflow: TextOverflow.ellipsis,
-              maxLines: 1,
+              maxLines: 4,
               style: Theme.of(context).textTheme.headline6?.copyWith(
                 color: Colors.white,
                 shadows: <Shadow>[
