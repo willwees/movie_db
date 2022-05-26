@@ -33,4 +33,18 @@ class ApiRepository {
   }) {
     return _apiService.getNowPlayingMovieList(apiKey, language);
   }
+
+  Future<MoviesResponseModel> getUpcomingMovieList({
+    String apiKey = ApiConstant.apiKey,
+    String language = ApiConstant.language,
+  }) {
+    return _apiService.getUpcomingMovieList(apiKey, language);
+  }
+
+  Future<MoviesResponseModel> getPopularMovieList({
+    String apiKey = ApiConstant.apiKey,
+    String language = ApiConstant.language,
+  }) {
+    return _apiService.getPopularMovieList(apiKey, language);
+  }
 }

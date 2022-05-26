@@ -6,4 +6,6 @@ class ApiConstant {
 
   // Movie
   static const String getNowPlayingMovieList = '/movie/now_playing';
+  static const String getUpcomingMovieList = '/movie/upcoming';
+  static const String getPopularMovieList = '/movie/popular';
 }

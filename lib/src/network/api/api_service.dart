@@ -14,4 +14,16 @@ abstract class ApiService {
     @Query('api_key') String apiKey,
     @Query('language') String language,
   );
+
+  @GET(ApiConstant.getUpcomingMovieList)
+  Future<MoviesResponseModel> getUpcomingMovieList(
+      @Query('api_key') String apiKey,
+      @Query('language') String language,
+      );
+
+  @GET(ApiConstant.getPopularMovieList)
+  Future<MoviesResponseModel> getPopularMovieList(
+      @Query('api_key') String apiKey,
+      @Query('language') String language,
+      );
 }
