@@ -1,21 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:moviedb/src/constants/app_colors.dart';
 import 'package:moviedb/src/constants/route_paths.dart';
+import 'package:moviedb/src/di/injector.dart';
+import 'package:moviedb/src/features/movie/bloc/movie_bloc.dart';
 import 'package:moviedb/src/features/root/ui/root_screen.dart';
 import 'package:moviedb/src/features/splash/ui/splash_screen.dart';
+
 
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Movie DB',
-      theme: ThemeData(
-        primarySwatch: AppColors.kSwatchColors,
+    return MultiBlocProvider(
+      providers: <BlocProvider<dynamic>>[
+        BlocProvider<MovieBloc>(
+          create: (BuildContext context) => injector<MovieBloc>(),
+        ),
+      ],
+      child: MaterialApp(
+        title: 'Movie DB',
+        theme: ThemeData(
+          primarySwatch: AppColors.kSwatchColors,
+        ),
+        initialRoute: RoutePaths.splash,
+        onGenerateRoute: _onGenerateRoute,
       ),
-      initialRoute: RoutePaths.splash,
-      onGenerateRoute: _onGenerateRoute,
     );
   }
 
@@ -33,11 +44,12 @@ class App extends StatelessWidget {
 
       default:
         return MaterialPageRoute<dynamic>(
-          builder: (_) => Scaffold(
-            body: Center(
-              child: Text('No route defined for ${settings.name}'),
-            ),
-          ),
+          builder: (_) =>
+              Scaffold(
+                body: Center(
+                  child: Text('No route defined for ${settings.name}'),
+                ),
+              ),
         );
     }
   }

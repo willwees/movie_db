@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:moviedb/src/features/movie/ui/widgets/movie_card_list_widget.dart';
-import 'package:moviedb/src/features/movie/ui/widgets/movie_card_widget.dart';
 
 class MovieScreen extends StatefulWidget {
   const MovieScreen({Key? key}) : super(key: key);
