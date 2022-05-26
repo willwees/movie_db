@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:moviedb/src/network/api/api_constant.dart';
 import 'package:moviedb/src/network/api/api_service.dart';
+import 'package:moviedb/src/network/model/response/movie_detail_response_model.dart';
 import 'package:moviedb/src/network/model/response/movies_response_model.dart';
 
 class ApiRepository {
@@ -46,5 +47,17 @@ class ApiRepository {
     String language = ApiConstant.language,
   }) {
     return _apiService.getPopularMovieList(apiKey, language);
+  }
+
+  Future<MovieDetailResponseModel> getMovieDetail({
+    String apiKey = ApiConstant.apiKey,
+    String language = ApiConstant.language,
+    required int movieId,
+  }) {
+    return _apiService.getMovieDetail(
+      apiKey,
+      language,
+      movieId: movieId,
+    );
   }
 }
