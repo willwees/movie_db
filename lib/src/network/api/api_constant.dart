@@ -11,4 +11,10 @@ class ApiConstant {
   static const String getPopularMovieList = '/movie/popular';
   static const String getMovieDetail = '/movie/{movieId}';
   static const String getMovieDetailReviews = '/movie/{movieId}/reviews';
+
+  // TV Show
+  static const String getTVOnTheAirTVShowList = '/tv/on_the_air';
+  static const String getPopularTVShowList = '/tv/popular';
+  static const String getTVShowDetail = '/tv/{tvShowId}';
+  static const String getTVShowDetailReviews = '/tv/{tvShowId}/reviews';
 }

@@ -33,4 +33,3 @@ class MovieDetailState extends Equatable {
         '}';
   }
 }
-

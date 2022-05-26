@@ -4,6 +4,8 @@ import 'package:moviedb/src/network/api/api_service.dart';
 import 'package:moviedb/src/network/model/response/movie/movie_detail_response_model.dart';
 import 'package:moviedb/src/network/model/response/movie/movies_response_model.dart';
 import 'package:moviedb/src/network/model/response/reviews_response_model.dart';
+import 'package:moviedb/src/network/model/response/tv_show/tv_show_detail_response_model.dart';
+import 'package:moviedb/src/network/model/response/tv_show/tv_shows_response_model.dart';
 
 class ApiRepository {
   late final ApiService _apiService;
@@ -71,6 +73,44 @@ class ApiRepository {
       apiKey,
       language,
       movieId: movieId,
+    );
+  }
+
+  Future<TVShowsResponseModel> getTVOnTheAirTVShowList({
+    String apiKey = ApiConstant.apiKey,
+    String language = ApiConstant.language,
+  }) {
+    return _apiService.getTVOnTheAirTVShowList(apiKey, language);
+  }
+
+  Future<TVShowsResponseModel> getPopularTVShowList({
+    String apiKey = ApiConstant.apiKey,
+    String language = ApiConstant.language,
+  }) {
+    return _apiService.getPopularTVShowList(apiKey, language);
+  }
+
+  Future<TVShowDetailResponseModel> getTVShowDetail({
+    String apiKey = ApiConstant.apiKey,
+    String language = ApiConstant.language,
+    required int tvShowId,
+  }) {
+    return _apiService.getTVShowDetail(
+      apiKey,
+      language,
+      tvShowId: tvShowId,
+    );
+  }
+
+  Future<ReviewsResponseModel> getTVShowDetailReviews({
+    String apiKey = ApiConstant.apiKey,
+    String language = ApiConstant.language,
+    required int tvShowId,
+  }) {
+    return _apiService.getTVShowDetailReviews(
+      apiKey,
+      language,
+      tvShowId: tvShowId,
     );
   }
 }
