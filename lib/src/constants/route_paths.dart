@@ -2,4 +2,5 @@
 class RoutePaths {
   static const String root = '/';
   static const String splash = 'splash';
+  static const String detail = 'detail';
 }

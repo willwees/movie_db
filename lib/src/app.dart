@@ -3,10 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:moviedb/src/constants/app_colors.dart';
 import 'package:moviedb/src/constants/route_paths.dart';
 import 'package:moviedb/src/di/injector.dart';
+import 'package:moviedb/src/features/detail/ui/detail_screen.dart';
 import 'package:moviedb/src/features/movie/bloc/movie_bloc.dart';
 import 'package:moviedb/src/features/root/ui/root_screen.dart';
 import 'package:moviedb/src/features/splash/ui/splash_screen.dart';
-
+import 'package:moviedb/src/network/model/response/movies_response_model.dart';
 
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
@@ -42,14 +43,22 @@ class App extends StatelessWidget {
           builder: (_) => const RootScreen(),
         );
 
+      case RoutePaths.detail:
+        final Movie movie = settings.arguments! as Movie;
+
+        return MaterialPageRoute<dynamic>(
+          builder: (_) => DetailScreen(
+            movie: movie,
+          ),
+        );
+
       default:
         return MaterialPageRoute<dynamic>(
-          builder: (_) =>
-              Scaffold(
-                body: Center(
-                  child: Text('No route defined for ${settings.name}'),
-                ),
-              ),
+          builder: (_) => Scaffold(
+            body: Center(
+              child: Text('No route defined for ${settings.name}'),
+            ),
+          ),
         );
     }
   }
