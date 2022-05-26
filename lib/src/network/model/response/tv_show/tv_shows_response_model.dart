@@ -47,7 +47,7 @@ class TVShow extends Equatable {
   final String posterPath;
 
   @JsonKey(name: 'backdrop_path')
-  final String backdropPath;
+  final String? backdropPath;
 
   @JsonKey(name: 'original_name')
   final String originalName;
@@ -66,7 +66,7 @@ class TVShow extends Equatable {
   );
 
   @override
-  List<Object> get props => <Object>[
+  List<Object?> get props => <Object?>[
         id,
         name,
         overview,
