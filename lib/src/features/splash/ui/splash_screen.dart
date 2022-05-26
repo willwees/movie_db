@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:moviedb/src/constants/asset_names.dart';
 import 'package:moviedb/src/constants/device_properties.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -9,12 +11,6 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  @override
-  void initState() {
-    super.initState();
-    _setupDevicePropertiesVariable(context);
-  }
-
   void _setupDevicePropertiesVariable(BuildContext context) {
     kDeviceSize = MediaQuery.of(context).size;
     kDeviceLogicalWidth = MediaQuery.of(context).size.width;
@@ -26,6 +22,21 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    // called in build because of MediaQuery
+    _setupDevicePropertiesVariable(context);
+
+    return Container(
+      height: double.infinity,
+      width: double.infinity,
+      alignment: Alignment.center,
+      padding: const EdgeInsets.symmetric(vertical: 2.0, horizontal: 2.0),
+      child: Center(
+        child: SvgPicture.asset(
+          GeneralAssetNames.movieDbLogoSvg,
+          width: 180,
+          height: 180,
+        ),
+      ),
+    );
   }
 }

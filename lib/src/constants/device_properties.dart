@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 
 // DEVICE PROPERTIES
 
-late final Size kDeviceSize;
+late Size kDeviceSize;
 
 // Size in logical pixels
-late final double kDeviceLogicalWidth;
-late final double kDeviceLogicalHeight;
+late double kDeviceLogicalWidth;
+late double kDeviceLogicalHeight;
 
 // Size in physical pixels
-late final double kDevicePhysicalWidth;
-late final double kDevicePhysicalHeight;
+late double kDevicePhysicalWidth;
+late double kDevicePhysicalHeight;
 
-late final double kDevicePixelRatio;
+late double kDevicePixelRatio;
