@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:moviedb/src/constants/route_paths.dart';
-import 'package:moviedb/src/features/movie/ui/movie_screen.dart';
+import 'package:moviedb/src/features/root/ui/root_screen.dart';
 import 'package:moviedb/src/features/splash/ui/splash_screen.dart';
 
 class App extends StatelessWidget {
@@ -27,7 +27,7 @@ class App extends StatelessWidget {
 
       case RoutePaths.root:
         return MaterialPageRoute<dynamic>(
-          builder: (_) => const MovieScreen(),
+          builder: (_) => const RootScreen(),
         );
 
       default:

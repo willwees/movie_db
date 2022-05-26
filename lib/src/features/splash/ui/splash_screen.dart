@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:moviedb/src/constants/asset_names.dart';
 import 'package:moviedb/src/constants/device_properties.dart';
+import 'package:moviedb/src/constants/route_paths.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -11,6 +12,16 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  @override
+  void initState() {
+    super.initState();
+
+    // Navigate to home after 2 seconds
+    Future<void>.delayed(const Duration(seconds: 2), () {
+      Navigator.pushReplacementNamed(context, RoutePaths.root);
+    });
+  }
+
   void _setupDevicePropertiesVariable(BuildContext context) {
     kDeviceSize = MediaQuery.of(context).size;
     kDeviceLogicalWidth = MediaQuery.of(context).size.width;
