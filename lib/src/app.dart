@@ -45,7 +45,7 @@ class App extends StatelessWidget {
           builder: (_) => const RootScreen(),
         );
 
-      case RoutePaths.detail:
+      case RoutePaths.movieDetail:
         final Movie movie = settings.arguments! as Movie;
 
         return MaterialPageRoute<dynamic>(

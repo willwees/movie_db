@@ -39,7 +39,7 @@ class MovieCardListWidget extends StatelessWidget {
                 text: movieList[index].title,
                 voteAverage: movieList[index].voteAverage,
                 onTap: () {
-                  Navigator.pushNamed(context, RoutePaths.detail, arguments: movieList[index]);
+                  Navigator.pushNamed(context, RoutePaths.movieDetail, arguments: movieList[index]);
                 },
               );
             },
