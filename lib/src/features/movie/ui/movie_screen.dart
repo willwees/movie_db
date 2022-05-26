@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:moviedb/src/constants/app_colors.dart';
+import 'package:moviedb/src/features/movie/ui/widgets/movie_card_list_widget.dart';
+import 'package:moviedb/src/features/movie/ui/widgets/movie_card_widget.dart';
 
 class MovieScreen extends StatefulWidget {
   const MovieScreen({Key? key}) : super(key: key);
@@ -9,7 +10,6 @@ class MovieScreen extends StatefulWidget {
 }
 
 class _MovieScreenState extends State<MovieScreen> with AutomaticKeepAliveClientMixin {
-
   @override
   Widget build(BuildContext context) {
     super.build(context);
@@ -20,10 +20,9 @@ class _MovieScreenState extends State<MovieScreen> with AutomaticKeepAliveClient
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
-          children: <Widget>[
-            Text(
-              'Now Playing',
-              style: Theme.of(context).textTheme.headline4,
+          children: const <Widget>[
+            MovieCardListWidget(
+              title: 'Now Playing',
             ),
           ],
         ),
