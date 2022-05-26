@@ -3,6 +3,7 @@ import 'package:moviedb/src/network/api/api_constant.dart';
 import 'package:moviedb/src/network/api/api_service.dart';
 import 'package:moviedb/src/network/model/response/movie_detail_response_model.dart';
 import 'package:moviedb/src/network/model/response/movies_response_model.dart';
+import 'package:moviedb/src/network/model/response/reviews_response_model.dart';
 
 class ApiRepository {
   late final ApiService _apiService;
@@ -55,6 +56,18 @@ class ApiRepository {
     required int movieId,
   }) {
     return _apiService.getMovieDetail(
+      apiKey,
+      language,
+      movieId: movieId,
+    );
+  }
+
+  Future<ReviewsResponseModel> getMovieDetailReviews({
+    String apiKey = ApiConstant.apiKey,
+    String language = ApiConstant.language,
+    required int movieId,
+  }) {
+    return _apiService.getMovieDetailReviews(
       apiKey,
       language,
       movieId: movieId,
