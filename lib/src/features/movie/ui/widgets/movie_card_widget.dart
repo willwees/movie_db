@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:moviedb/src/constants/device_properties.dart';
+import 'package:moviedb/src/constants/transparent_images.dart';
 
 class MovieCardWidget extends StatelessWidget {
   final String imageUrl;
@@ -40,11 +41,9 @@ class MovieCardWidget extends StatelessWidget {
   Widget _buildBackgroundImage() {
     return ClipRRect(
       borderRadius: const BorderRadius.all(Radius.circular(10.0)),
-      child: Image.network(
-        imageUrl,
-        height: kDeviceLogicalWidth / 1.8,
-        width: kDeviceLogicalWidth / 2.5,
-        fit: BoxFit.cover,
+      child: FadeInImage.memoryNetwork(
+        placeholder: kTransparentImage,
+        image: imageUrl,
       ),
     );
   }
