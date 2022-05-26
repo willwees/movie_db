@@ -44,4 +44,10 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# fvm
 .fvm/flutter_sdk
+
+# Generated codes
+*.gr.dart
+*.g.dart
