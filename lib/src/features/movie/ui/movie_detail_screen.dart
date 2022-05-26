@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:moviedb/src/constants/text/detail_text.dart';
-import 'package:moviedb/src/features/detail/ui/widgets/detail_header_widget.dart';
+import 'package:moviedb/src/features/movie/ui/widgets/detail_header_widget.dart';
 import 'package:moviedb/src/network/api/api_constant.dart';
 import 'package:moviedb/src/network/model/response/movies_response_model.dart';
 
-class DetailScreen extends StatefulWidget {
+class MovieDetailScreen extends StatefulWidget {
   final Movie movie;
 
-  const DetailScreen({
+  const MovieDetailScreen({
     Key? key,
     required this.movie,
   }) : super(key: key);
 
   @override
-  State<DetailScreen> createState() => _DetailScreenState();
+  State<MovieDetailScreen> createState() => _MovieDetailScreenState();
 }
 
-class _DetailScreenState extends State<DetailScreen> {
+class _MovieDetailScreenState extends State<MovieDetailScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

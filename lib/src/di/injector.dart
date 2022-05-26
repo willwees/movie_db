@@ -1,5 +1,5 @@
 import 'package:get_it/get_it.dart';
-import 'package:moviedb/src/features/movie/bloc/movie_bloc.dart';
+import 'package:moviedb/src/features/movie/bloc/movie/movie_bloc.dart';
 import 'package:moviedb/src/repository/api_repository.dart';
 
 final GetIt injector = GetIt.instance;
