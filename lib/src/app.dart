@@ -9,7 +9,10 @@ import 'package:moviedb/src/features/movie/ui/movie_detail_screen.dart';
 import 'package:moviedb/src/features/root/ui/root_screen.dart';
 import 'package:moviedb/src/features/splash/ui/splash_screen.dart';
 import 'package:moviedb/src/features/tv_show/bloc/tv_show/tvshow_bloc.dart';
+import 'package:moviedb/src/features/tv_show/bloc/tv_show_detail/tvshow_detail_bloc.dart';
+import 'package:moviedb/src/features/tv_show/ui/tv_show_detail_screen.dart';
 import 'package:moviedb/src/network/model/response/movie/movies_response_model.dart';
+import 'package:moviedb/src/network/model/response/tv_show/tv_shows_response_model.dart';
 import 'package:moviedb/src/repository/api_repository.dart';
 
 class App extends StatelessWidget {
@@ -57,6 +60,18 @@ class App extends StatelessWidget {
             create: (_) => MovieDetailBloc(repository: injector<ApiRepository>()),
             child: MovieDetailScreen(
               movie: movie,
+            ),
+          ),
+        );
+
+      case RoutePaths.tvShowDetail:
+        final TVShow tvShow = settings.arguments! as TVShow;
+
+        return MaterialPageRoute<dynamic>(
+          builder: (_) => BlocProvider<TVShowDetailBloc>(
+            create: (_) => TVShowDetailBloc(repository: injector<ApiRepository>()),
+            child: TVShowDetailScreen(
+              tvShow: tvShow,
             ),
           ),
         );

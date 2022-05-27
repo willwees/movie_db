@@ -3,19 +3,19 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:moviedb/src/constants/device_properties.dart';
 import 'package:moviedb/src/constants/transparent_images.dart';
-import 'package:moviedb/src/features/movie/bloc/movie_detail/movie_detail_bloc.dart';
-import 'package:moviedb/src/network/model/response/movie/movie_detail_response_model.dart';
+import 'package:moviedb/src/features/tv_show/bloc/tv_show_detail/tvshow_detail_bloc.dart';
+import 'package:moviedb/src/network/model/response/tv_show/tv_show_detail_response_model.dart';
 
-class MovieDetailHeaderWidget extends StatelessWidget {
-  final int movieId;
+class TVShowDetailHeaderWidget extends StatelessWidget {
+  final int tvShowId;
   final String title;
   final String imageBannerUrl;
   final String imagePosterUrl;
   final double voteAverage;
 
-  const MovieDetailHeaderWidget({
+  const TVShowDetailHeaderWidget({
     Key? key,
-    required this.movieId,
+    required this.tvShowId,
     required this.title,
     required this.imageBannerUrl,
     required this.imagePosterUrl,
@@ -101,12 +101,12 @@ class MovieDetailHeaderWidget extends StatelessWidget {
   }
 
   Widget _buildGenreSection(BuildContext context) {
-    return BlocBuilder<MovieDetailBloc, MovieDetailState>(
-      bloc: context.read<MovieDetailBloc>(),
-      buildWhen: (MovieDetailState previous, MovieDetailState current) =>
-          previous.movieDetailResponseModel != current.movieDetailResponseModel,
-      builder: (_, MovieDetailState state) {
-        if (state.movieDetailResponseModel == null) {
+    return BlocBuilder<TVShowDetailBloc, TVShowDetailState>(
+      bloc: context.read<TVShowDetailBloc>(),
+      buildWhen: (TVShowDetailState previous, TVShowDetailState current) =>
+          previous.tvShowDetailResponseModel != current.tvShowDetailResponseModel,
+      builder: (_, TVShowDetailState state) {
+        if (state.tvShowDetailResponseModel == null) {
           return Container();
         }
 
@@ -115,13 +115,11 @@ class MovieDetailHeaderWidget extends StatelessWidget {
           child: SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(
-              children: state.movieDetailResponseModel!.genres
+              children: state.tvShowDetailResponseModel!.genres
                   .map(
                     (Genre genre) => Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 4.0),
-                      child: Chip(
-                        label: Text(genre.name),
-                      ),
+                      padding: const EdgeInsets.all(4.0),
+                      child: Chip(label: Text(genre.name)),
                     ),
                   )
                   .toList(),

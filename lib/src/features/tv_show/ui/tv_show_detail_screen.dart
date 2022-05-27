@@ -1,31 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:moviedb/src/constants/text/detail_text.dart';
-import 'package:moviedb/src/features/movie/bloc/movie_detail/movie_detail_bloc.dart';
-import 'package:moviedb/src/features/movie/ui/widgets/movie_detail_header_widget.dart';
+import 'package:moviedb/src/features/tv_show/bloc/tv_show_detail/tvshow_detail_bloc.dart';
+import 'package:moviedb/src/features/tv_show/ui/widgets/tv_show_detail_header_widget.dart';
 import 'package:moviedb/src/network/api/api_constant.dart';
-import 'package:moviedb/src/network/model/response/movie/movies_response_model.dart';
 import 'package:moviedb/src/network/model/response/reviews_response_model.dart';
+import 'package:moviedb/src/network/model/response/tv_show/tv_shows_response_model.dart';
 import 'package:moviedb/src/shared/widgets/movie_review_card_widget.dart';
 
-class MovieDetailScreen extends StatefulWidget {
-  final Movie movie;
+class TVShowDetailScreen extends StatefulWidget {
+  final TVShow tvShow;
 
-  const MovieDetailScreen({
+  const TVShowDetailScreen({
     Key? key,
-    required this.movie,
+    required this.tvShow,
   }) : super(key: key);
 
   @override
-  State<MovieDetailScreen> createState() => _MovieDetailScreenState();
+  State<TVShowDetailScreen> createState() => _TVShowDetailScreenState();
 }
 
-class _MovieDetailScreenState extends State<MovieDetailScreen> {
+class _TVShowDetailScreenState extends State<TVShowDetailScreen> {
   @override
   void initState() {
     super.initState();
-    context.read<MovieDetailBloc>().add(MovieDetailGetMovieDetailEvent(movieId: widget.movie.id));
-    context.read<MovieDetailBloc>().add(MovieDetailGetMovieReviewListEvent(movieId: widget.movie.id));
+    context.read<TVShowDetailBloc>().add(TVShowDetailGetTVShowDetailEvent(tvShowId: widget.tvShow.id));
+    context.read<TVShowDetailBloc>().add(TVShowDetailGetTVShowReviewListEvent(tvShowId: widget.tvShow.id));
   }
 
   @override
@@ -39,18 +39,18 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            MovieDetailHeaderWidget(
-              movieId: widget.movie.id,
-              title: widget.movie.title,
-              imageBannerUrl: '${ApiConstant.baseImageOriginalUrl}${widget.movie.backdropPath}',
-              imagePosterUrl: '${ApiConstant.baseImageSmallUrl}${widget.movie.posterPath}',
-              voteAverage: widget.movie.voteAverage,
+            TVShowDetailHeaderWidget(
+              tvShowId: widget.tvShow.id,
+              title: widget.tvShow.name,
+              imageBannerUrl: '${ApiConstant.baseImageOriginalUrl}${widget.tvShow.backdropPath}',
+              imagePosterUrl: '${ApiConstant.baseImageSmallUrl}${widget.tvShow.posterPath}',
+              voteAverage: widget.tvShow.voteAverage,
             ),
             const SizedBox(height: 8.0),
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: Text(
-                widget.movie.overview,
+                widget.tvShow.overview,
                 style: Theme.of(context).textTheme.caption,
                 textAlign: TextAlign.justify,
               ),
@@ -63,10 +63,10 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
   }
 
   Widget _buildReviewList() {
-    return BlocBuilder<MovieDetailBloc, MovieDetailState>(
-      bloc: context.read<MovieDetailBloc>(),
-      buildWhen: (MovieDetailState previous, MovieDetailState current) => previous.reviewList != current.reviewList,
-      builder: (_, MovieDetailState state) {
+    return BlocBuilder<TVShowDetailBloc, TVShowDetailState>(
+      bloc: context.read<TVShowDetailBloc>(),
+      buildWhen: (TVShowDetailState previous, TVShowDetailState current) => previous.reviewList != current.reviewList,
+      builder: (_, TVShowDetailState state) {
         if (state.reviewList.isEmpty) {
           return Container();
         }
@@ -84,11 +84,11 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
               ...state.reviewList
                   .map(
                     (Review review) => MovieReviewCardWidget(
-                      avatarUrl: review.authorDetails.avatarPath,
-                      username: review.author,
-                      content: review.content,
-                    ),
-                  )
+                  avatarUrl: review.authorDetails.avatarPath,
+                  username: review.author,
+                  content: review.content,
+                ),
+              )
                   .toList(),
             ],
           ),
