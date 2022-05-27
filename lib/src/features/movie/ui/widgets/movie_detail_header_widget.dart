@@ -28,22 +28,7 @@ class MovieDetailHeaderWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: <Widget>[
-        if (backdropPath != null)
-          Padding(
-            padding: EdgeInsets.only(bottom: kDeviceLogicalWidth / 4),
-            child: FadeInImage.memoryNetwork(
-              placeholder: kTransparentImage,
-              image: '${ApiConstant.baseImageOriginalUrl}$backdropPath',
-            ),
-          )
-        else
-          Padding(
-            padding: EdgeInsets.only(bottom: kDeviceLogicalWidth / 4),
-            child: Image.asset(
-              GeneralAssetNames.movieDbLogoShortPng,
-              width: kDeviceLogicalWidth,
-            ),
-          ),
+        _buildBanner(),
         Positioned(
           bottom: 0.0,
           left: 16.0,
@@ -70,6 +55,25 @@ class MovieDetailHeaderWidget extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+
+  Widget _buildBanner() {
+    if (backdropPath != null) {
+      return Padding(
+        padding: EdgeInsets.only(bottom: kDeviceLogicalWidth / 3),
+        child: FadeInImage.memoryNetwork(
+          placeholder: kTransparentImage,
+          image: '${ApiConstant.baseImageOriginalUrl}$backdropPath',
+        ),
+      );
+    }
+    return Padding(
+      padding: EdgeInsets.only(bottom: kDeviceLogicalWidth / 3),
+      child: Image.asset(
+        GeneralAssetNames.movieDbLogoShortPng,
+        width: kDeviceLogicalWidth,
+      ),
     );
   }
 
