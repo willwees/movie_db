@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
-class MovieReviewCardWidget extends StatelessWidget {
+class CardReviewWidget extends StatelessWidget {
   final String username;
   final String content;
   final double? rating;
 
-  const MovieReviewCardWidget({
+  const CardReviewWidget({
     Key? key,
     required this.username,
     required this.content,

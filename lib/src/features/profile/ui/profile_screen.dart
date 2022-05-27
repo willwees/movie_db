@@ -3,7 +3,7 @@ import 'package:moviedb/src/constants/app_colors.dart';
 import 'package:moviedb/src/constants/asset_names.dart';
 import 'package:moviedb/src/constants/device_properties.dart';
 import 'package:moviedb/src/constants/text/profile_text.dart';
-import 'package:moviedb/src/shared/widgets/movie_review_card_widget.dart';
+import 'package:moviedb/src/shared/widgets/card_review_widget.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -122,7 +122,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         const SizedBox(height: 8.0),
         ..._mockupList
             .map(
-              (e) => MovieReviewCardWidget(
+              (e) => CardReviewWidget(
                 username: e['movie'] as String,
                 content: e['content'] as String,
                 rating: e['rating'] as double,

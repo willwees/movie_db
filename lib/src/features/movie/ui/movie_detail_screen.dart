@@ -5,7 +5,7 @@ import 'package:moviedb/src/features/movie/bloc/movie_detail/movie_detail_bloc.d
 import 'package:moviedb/src/features/movie/ui/widgets/movie_detail_header_widget.dart';
 import 'package:moviedb/src/network/model/response/movie/movies_response_model.dart';
 import 'package:moviedb/src/network/model/response/reviews_response_model.dart';
-import 'package:moviedb/src/shared/widgets/movie_review_card_widget.dart';
+import 'package:moviedb/src/shared/widgets/card_review_widget.dart';
 
 class MovieDetailScreen extends StatefulWidget {
   final Movie movie;
@@ -82,7 +82,7 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
               const SizedBox(height: 8.0),
               ...state.reviewList
                   .map(
-                    (Review review) => MovieReviewCardWidget(
+                    (Review review) => CardReviewWidget(
                       username: review.author,
                       content: review.content,
                       rating: review.authorDetails.rating,

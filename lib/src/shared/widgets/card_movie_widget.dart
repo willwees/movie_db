@@ -3,13 +3,13 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:moviedb/src/constants/device_properties.dart';
 import 'package:moviedb/src/constants/transparent_images.dart';
 
-class MovieCardWidget extends StatelessWidget {
+class CardMovieWidget extends StatelessWidget {
   final String imageUrl;
   final String text;
   final double voteAverage;
   final VoidCallback onTap;
 
-  const MovieCardWidget({
+  const CardMovieWidget({
     Key? key,
     required this.imageUrl,
     required this.text,

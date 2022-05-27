@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:moviedb/src/constants/text/movie_text.dart';
 import 'package:moviedb/src/features/movie/bloc/movie/movie_bloc.dart';
 import 'package:moviedb/src/features/movie/ui/widgets/movie_card_list_widget.dart';
-import 'package:moviedb/src/shared/widgets/movie_card_list_shimmer_widget.dart';
+import 'package:moviedb/src/shared/widgets/card_movie_list_shimmer_widget.dart';
 
 class MovieScreen extends StatefulWidget {
   const MovieScreen({Key? key}) : super(key: key);
@@ -61,7 +61,7 @@ class _MovieScreenState extends State<MovieScreen> with AutomaticKeepAliveClient
         }
 
         // default loading
-        return const MovieCardListShimmerWidget(title: MovieText.nowPlaying);
+        return const CardMovieListShimmerWidget(title: MovieText.nowPlaying);
       },
     );
   }
@@ -79,7 +79,7 @@ class _MovieScreenState extends State<MovieScreen> with AutomaticKeepAliveClient
         }
 
         // default loading
-        return const MovieCardListShimmerWidget(title: MovieText.upcoming);
+        return const CardMovieListShimmerWidget(title: MovieText.upcoming);
       },
     );
   }
@@ -97,7 +97,7 @@ class _MovieScreenState extends State<MovieScreen> with AutomaticKeepAliveClient
         }
 
         // default loading
-        return const MovieCardListShimmerWidget(title: MovieText.popular);
+        return const CardMovieListShimmerWidget(title: MovieText.popular);
       },
     );
   }

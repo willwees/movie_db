@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:moviedb/src/constants/app_colors.dart';
 import 'package:moviedb/src/constants/device_properties.dart';
-import 'package:moviedb/src/shared/widgets/movie_card_widget.dart';
+import 'package:moviedb/src/shared/widgets/card_movie_widget.dart';
 import 'package:shimmer/shimmer.dart';
 
-class MovieCardListShimmerWidget extends StatelessWidget {
+class CardMovieListShimmerWidget extends StatelessWidget {
   final String title;
 
-  const MovieCardListShimmerWidget({
+  const CardMovieListShimmerWidget({
     Key? key,
     required this.title,
   }) : super(key: key);
@@ -34,7 +34,7 @@ class MovieCardListShimmerWidget extends StatelessWidget {
               return Shimmer.fromColors(
                 baseColor: AppColors.kDarkBlue,
                 highlightColor: AppColors.kLightBlue,
-                child: MovieCardWidget(
+                child: CardMovieWidget(
                   imageUrl: 'https://picsum.photos/250?image=9',
                   text: 'Movie',
                   voteAverage: 6.8,

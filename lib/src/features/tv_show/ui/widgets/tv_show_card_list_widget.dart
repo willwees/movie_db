@@ -3,7 +3,7 @@ import 'package:moviedb/src/constants/device_properties.dart';
 import 'package:moviedb/src/constants/route_paths.dart';
 import 'package:moviedb/src/network/api/api_constant.dart';
 import 'package:moviedb/src/network/model/response/tv_show/tv_shows_response_model.dart';
-import 'package:moviedb/src/shared/widgets/movie_card_widget.dart';
+import 'package:moviedb/src/shared/widgets/card_movie_widget.dart';
 
 class TVShowCardListWidget extends StatelessWidget {
   final String title;
@@ -34,7 +34,7 @@ class TVShowCardListWidget extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             itemCount: tvShowList.length,
             itemBuilder: (_, int index) {
-              return MovieCardWidget(
+              return CardMovieWidget(
                 imageUrl: '${ApiConstant.baseImageSmallUrl}${tvShowList[index].posterPath}',
                 text: tvShowList[index].name,
                 voteAverage: tvShowList[index].voteAverage,

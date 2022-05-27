@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:moviedb/src/constants/text/tv_show_text.dart';
 import 'package:moviedb/src/features/tv_show/bloc/tv_show/tvshow_bloc.dart';
 import 'package:moviedb/src/features/tv_show/ui/widgets/tv_show_card_list_widget.dart';
-import 'package:moviedb/src/shared/widgets/movie_card_list_shimmer_widget.dart';
+import 'package:moviedb/src/shared/widgets/card_movie_list_shimmer_widget.dart';
 
 class TVShowScreen extends StatefulWidget {
   const TVShowScreen({Key? key}) : super(key: key);
@@ -58,7 +58,7 @@ class _TVShowScreenState extends State<TVShowScreen> with AutomaticKeepAliveClie
         }
 
         // default loading
-        return const MovieCardListShimmerWidget(title: TVShowText.tvOnTheAir);
+        return const CardMovieListShimmerWidget(title: TVShowText.tvOnTheAir);
       },
     );
   }
@@ -76,7 +76,7 @@ class _TVShowScreenState extends State<TVShowScreen> with AutomaticKeepAliveClie
         }
 
         // default loading
-        return const MovieCardListShimmerWidget(title: TVShowText.popular);
+        return const CardMovieListShimmerWidget(title: TVShowText.popular);
       },
     );
   }
