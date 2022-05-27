@@ -36,17 +36,7 @@ class MovieDetailHeaderWidget extends StatelessWidget {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: <Widget>[
-              if (posterPath != null)
-                FadeInImage.memoryNetwork(
-                  placeholder: kTransparentImage,
-                  image: '${ApiConstant.baseImageSmallUrl}$posterPath',
-                  height: 200,
-                )
-              else
-                Image.asset(
-                  GeneralAssetNames.movieDbLogoPng,
-                  width: 150,
-                ),
+              _buildPoster(),
               const SizedBox(width: 16.0),
               Expanded(
                 child: _buildMovieInfo(context),
@@ -74,6 +64,21 @@ class MovieDetailHeaderWidget extends StatelessWidget {
         GeneralAssetNames.movieDbLogoShortPng,
         width: kDeviceLogicalWidth,
       ),
+    );
+  }
+
+  Widget _buildPoster() {
+    if (posterPath != null) {
+      return FadeInImage.memoryNetwork(
+        placeholder: kTransparentImage,
+        image: '${ApiConstant.baseImageSmallUrl}$posterPath',
+        height: 200,
+      );
+    }
+
+    return Image.asset(
+      GeneralAssetNames.movieDbLogoPng,
+      width: 150,
     );
   }
 
