@@ -80,10 +80,10 @@ class AuthorDetails extends Equatable {
   final String username;
 
   @JsonKey(name: 'avatar_path')
-  final String avatarPath;
+  final String? avatarPath;
 
   @JsonKey(name: 'rating')
-  final double rating;
+  final double? rating;
 
   const AuthorDetails(
     this.name,
@@ -93,7 +93,7 @@ class AuthorDetails extends Equatable {
   );
 
   @override
-  List<Object?> get props => <Object>[
+  List<Object?> get props => <Object?>[
         name,
         username,
         avatarPath,

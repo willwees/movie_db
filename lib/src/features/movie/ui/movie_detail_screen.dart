@@ -83,9 +83,9 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
               ...state.reviewList
                   .map(
                     (Review review) => MovieReviewCardWidget(
-                      avatarUrl: review.authorDetails.avatarPath,
                       username: review.author,
                       content: review.content,
+                      rating: review.authorDetails.rating,
                     ),
                   )
                   .toList(),

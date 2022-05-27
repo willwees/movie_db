@@ -83,11 +83,11 @@ class _TVShowDetailScreenState extends State<TVShowDetailScreen> {
               ...state.reviewList
                   .map(
                     (Review review) => MovieReviewCardWidget(
-                  avatarUrl: review.authorDetails.avatarPath,
-                  username: review.author,
-                  content: review.content,
-                ),
-              )
+                      username: review.author,
+                      content: review.content,
+                      rating: review.authorDetails.rating,
+                    ),
+                  )
                   .toList(),
             ],
           ),
