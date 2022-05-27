@@ -4,6 +4,7 @@ import 'package:moviedb/src/constants/text/movie_text.dart';
 import 'package:moviedb/src/constants/text/profile_text.dart';
 import 'package:moviedb/src/constants/text/tv_show_text.dart';
 import 'package:moviedb/src/features/movie/ui/movie_screen.dart';
+import 'package:moviedb/src/features/profile/ui/profile_screen.dart';
 import 'package:moviedb/src/features/tv_show/ui/tv_show_screen.dart';
 
 class RootScreen extends StatefulWidget {
@@ -43,7 +44,7 @@ class _RootScreenState extends State<RootScreen> {
         children: const <Widget>[
           MovieScreen(),
           TVShowScreen(),
-          MovieScreen(),
+          ProfileScreen(),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
