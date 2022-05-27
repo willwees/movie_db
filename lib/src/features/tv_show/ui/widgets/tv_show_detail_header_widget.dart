@@ -1,24 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:moviedb/src/constants/asset_names.dart';
 import 'package:moviedb/src/constants/device_properties.dart';
 import 'package:moviedb/src/constants/transparent_images.dart';
 import 'package:moviedb/src/features/tv_show/bloc/tv_show_detail/tvshow_detail_bloc.dart';
+import 'package:moviedb/src/network/api/api_constant.dart';
 import 'package:moviedb/src/network/model/response/tv_show/tv_show_detail_response_model.dart';
 
 class TVShowDetailHeaderWidget extends StatelessWidget {
   final int tvShowId;
   final String title;
-  final String imageBannerUrl;
-  final String imagePosterUrl;
+  final String? backdropPath;
+  final String? posterPath;
   final double voteAverage;
 
   const TVShowDetailHeaderWidget({
     Key? key,
     required this.tvShowId,
     required this.title,
-    required this.imageBannerUrl,
-    required this.imagePosterUrl,
+    required this.backdropPath,
+    required this.posterPath,
     required this.voteAverage,
   }) : super(key: key);
 
@@ -26,13 +28,22 @@ class TVShowDetailHeaderWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: <Widget>[
-        Padding(
-          padding: EdgeInsets.only(bottom: kDeviceLogicalWidth / 4),
-          child: FadeInImage.memoryNetwork(
-            placeholder: kTransparentImage,
-            image: imageBannerUrl,
+        if (backdropPath != null)
+          Padding(
+            padding: EdgeInsets.only(bottom: kDeviceLogicalWidth / 4),
+            child: FadeInImage.memoryNetwork(
+              placeholder: kTransparentImage,
+              image: '${ApiConstant.baseImageOriginalUrl}$backdropPath',
+            ),
+          )
+        else
+          Padding(
+            padding: EdgeInsets.only(bottom: kDeviceLogicalWidth / 4),
+            child: Image.asset(
+              GeneralAssetNames.movieDbLogoShortPng,
+              width: kDeviceLogicalWidth,
+            ),
           ),
-        ),
         Positioned(
           bottom: 0.0,
           left: 16.0,
@@ -40,11 +51,17 @@ class TVShowDetailHeaderWidget extends StatelessWidget {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: <Widget>[
-              FadeInImage.memoryNetwork(
-                placeholder: kTransparentImage,
-                image: imagePosterUrl,
-                height: 200,
-              ),
+              if (posterPath != null)
+                FadeInImage.memoryNetwork(
+                  placeholder: kTransparentImage,
+                  image: '${ApiConstant.baseImageSmallUrl}$posterPath',
+                  height: 200,
+                )
+              else
+                Image.asset(
+                  GeneralAssetNames.movieDbLogoPng,
+                  width: 150,
+                ),
               const SizedBox(width: 16.0),
               Expanded(
                 child: _buildMovieInfo(context),

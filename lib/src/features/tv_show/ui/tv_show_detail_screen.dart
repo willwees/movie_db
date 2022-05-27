@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:moviedb/src/constants/text/detail_text.dart';
 import 'package:moviedb/src/features/tv_show/bloc/tv_show_detail/tvshow_detail_bloc.dart';
 import 'package:moviedb/src/features/tv_show/ui/widgets/tv_show_detail_header_widget.dart';
-import 'package:moviedb/src/network/api/api_constant.dart';
 import 'package:moviedb/src/network/model/response/reviews_response_model.dart';
 import 'package:moviedb/src/network/model/response/tv_show/tv_shows_response_model.dart';
 import 'package:moviedb/src/shared/widgets/movie_review_card_widget.dart';
@@ -42,8 +41,8 @@ class _TVShowDetailScreenState extends State<TVShowDetailScreen> {
             TVShowDetailHeaderWidget(
               tvShowId: widget.tvShow.id,
               title: widget.tvShow.name,
-              imageBannerUrl: '${ApiConstant.baseImageOriginalUrl}${widget.tvShow.backdropPath}',
-              imagePosterUrl: '${ApiConstant.baseImageSmallUrl}${widget.tvShow.posterPath}',
+              backdropPath: widget.tvShow.backdropPath,
+              posterPath: widget.tvShow.posterPath,
               voteAverage: widget.tvShow.voteAverage,
             ),
             const SizedBox(height: 8.0),

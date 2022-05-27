@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:moviedb/src/constants/text/detail_text.dart';
 import 'package:moviedb/src/features/movie/bloc/movie_detail/movie_detail_bloc.dart';
 import 'package:moviedb/src/features/movie/ui/widgets/movie_detail_header_widget.dart';
-import 'package:moviedb/src/network/api/api_constant.dart';
 import 'package:moviedb/src/network/model/response/movie/movies_response_model.dart';
 import 'package:moviedb/src/network/model/response/reviews_response_model.dart';
 import 'package:moviedb/src/shared/widgets/movie_review_card_widget.dart';
@@ -42,8 +41,8 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
             MovieDetailHeaderWidget(
               movieId: widget.movie.id,
               title: widget.movie.title,
-              imageBannerUrl: '${ApiConstant.baseImageOriginalUrl}${widget.movie.backdropPath}',
-              imagePosterUrl: '${ApiConstant.baseImageSmallUrl}${widget.movie.posterPath}',
+              backdropPath: widget.movie.backdropPath,
+              posterPath: widget.movie.posterPath,
               voteAverage: widget.movie.voteAverage,
             ),
             const SizedBox(height: 8.0),
