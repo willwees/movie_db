@@ -27,10 +27,10 @@ class TVShowDetailResponseModel extends Equatable {
   final double popularity;
 
   @JsonKey(name: 'poster_path')
-  final String posterPath;
+  final String? posterPath;
 
   @JsonKey(name: 'backdrop_path')
-  final String backdropPath;
+  final String? backdropPath;
 
   @JsonKey(name: 'original_name')
   final String originalName;
@@ -49,7 +49,7 @@ class TVShowDetailResponseModel extends Equatable {
       );
 
   @override
-  List<Object> get props => <Object>[
+  List<Object?> get props => <Object?>[
     id,
     name,
     overview,
